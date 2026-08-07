@@ -1,0 +1,9 @@
+  {
+    "type": "java",
+    "name": "ClothingInventoryApplication",
+    "request": "launch",
+    "mainClass": "com.pradeesha.clothing_inventory.ClothingInventoryApplication",
+    "projectName": "clothing-inventory",
+    "shortenCommandLine": "jarmanifest",
+    "noDebug": true
+}
