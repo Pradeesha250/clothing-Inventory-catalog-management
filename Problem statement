@@ -1,0 +1,31 @@
+# Problem Statement
+
+## Project Title
+Clothing Inventory & Catalog Management Platform
+
+## Domain
+Retail / Boutique Management
+
+## Problem Description
+Many boutique owners manage clothing inventory manually using notebooks or spreadsheets. This can lead to incorrect stock records, difficulty finding products, and delays in updating inventory. A digital inventory management system helps maintain accurate product information and stock levels.
+
+## Proposed Solution
+Develop a full-stack web application that allows boutique owners to:
+- Login securely
+- Manage product categories
+- Add, update and delete clothing products
+- Track inventory quantity
+- Search products
+- View low-stock items through a dashboard
+
+## Users
+- Admin (Boutique Owner)
+- Staff
+
+## Technology Stack
+- Frontend: React.js
+- Backend: Spring Boot (Java)
+- Database: MySQL
+
+## Expected Outcome
+The system will simplify inventory management, reduce manual work, and provide an organized way to manage clothing products and stock.
