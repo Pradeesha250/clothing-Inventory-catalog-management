@@ -1,6 +1,10 @@
- package com.pradeesha.clothing_inventory.entity;
+  package com.pradeesha.clothing_inventory.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "products")
@@ -10,9 +14,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
 
-    @Column(name = "product_name")
     private String productName;
-
     private String category;
     private String size;
     private String color;
