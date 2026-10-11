@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "c1a01122-38e9-4e78-b7fb-5899451912a7",
+		"name": "Clothing Inventory Management API",
+		"description": "Postman collection for Clothing Inventory Catalog Management System college project. Includes User Registration, Database Login with BCrypt hashing, and Product CRUD APIs with MySQL persistence.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth - Register New User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"newuser\",\n  \"password\": \"SecurePass123\",\n  \"role\": \"USER\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				},
+				"description": "Registers a new user in MySQL table 'users' with salted BCrypt password hashing."
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login (Database Verified with BCrypt)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"newuser\",\n  \"password\": \"SecurePass123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Authenticates user credentials against MySQL database using BCrypt password matching."
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login (Default Admin)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Database-backed authentication for default admin account (BCrypt hashed in MySQL)"
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login (Default User)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"user\",\n  \"password\": \"user123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Database-backed authentication for default user account (BCrypt hashed in MySQL)"
+			},
+			"response": []
+		},
+		{
+			"name": "Products - Get All Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				},
+				"description": "Retrieves all clothing products stored in MySQL clothing_inventory.products table"
+			},
+			"response": []
+		},
+		{
+			"name": "Products - Get Product By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1"
+					]
+				},
+				"description": "Retrieves a single clothing product by its productId"
+			},
+			"response": []
+		},
+		{
+			"name": "Products - Create Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"productName\": \"Formal White Shirt\",\n  \"category\": \"Formal\",\n  \"size\": \"L\",\n  \"color\": \"White\",\n  \"quantity\": 25,\n  \"price\": 1199.0\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				},
+				"description": "Creates a new clothing item in MySQL with auto-generated productId"
+			},
+			"response": []
+		},
+		{
+			"name": "Products - Update Product By ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"productName\": \"Formal White Shirt (Premium Slim Fit)\",\n  \"category\": \"Formal\",\n  \"size\": \"XL\",\n  \"color\": \"Pure White\",\n  \"quantity\": 30,\n  \"price\": 1299.0\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1"
+					]
+				},
+				"description": "Updates details of an existing product in MySQL"
+			},
+			"response": []
+		},
+		{
+			"name": "Products - Delete Product By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1"
+					]
+				},
+				"description": "Deletes an existing product record from MySQL"
+			},
+			"response": []
+		}
+	]
+}

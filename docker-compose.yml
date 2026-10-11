@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service
+  mysql-db:
+    image: mysql:8.0
+    container_name: clothing-inventory-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: MySQL@123
+      MYSQL_DATABASE: clothing_inventory
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  # Spring Boot Backend Service
+  backend:
+    build: .
+    container_name: clothing-inventory-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/clothing_inventory?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: MySQL@123
+    depends_on:
+      - mysql-db
+
+  # React Frontend Service
+  frontend:
+    build: ./clothing-inventory-frontend
+    container_name: clothing-inventory-frontend
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      VITE_API_URL: http://localhost:8080
+    depends_on:
+      - backend
+
+volumes:
+  mysql-data:
